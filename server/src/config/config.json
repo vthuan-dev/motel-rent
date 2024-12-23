@@ -1,0 +1,32 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "phong_tro",
+    "host": "localhost",
+    "port": "3307",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "DrmxevlhpNhukkDEqMbNDaMrYLhXkloQ",
+    "database": "railway",
+    "host": "RAILWAY_PRIVATE_DOMAIN",
+    "port": "3306",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
