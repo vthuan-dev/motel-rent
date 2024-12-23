@@ -1,16 +1,15 @@
-# Sử dụng node image có sẵn npm
 FROM node:14-alpine
 
-# Set working directory
-WORKDIR /app
+# Set working directory là /app/server luôn
+WORKDIR /app/server
 
-# Copy package.json và package-lock.json
+# Copy package.json trước
 COPY server/package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy source code
+# Copy toàn bộ code server
 COPY server/ ./
 
 # Set environment variables
@@ -20,5 +19,5 @@ ENV PORT=5000
 # Expose port
 EXPOSE 5000
 
-# Start command
+# Start command không cần cd nữa
 CMD ["npm", "start"]
