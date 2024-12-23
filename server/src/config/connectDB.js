@@ -1,24 +1,34 @@
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
-  'phong_tro', // database
+  'railway', // database name trên Railway
   'root', // username
-  '123456', // password
+  'CmcxpBTQwDhHRCnCiJiiUIQegmnxcUJU', // password từ Railway
   {
-    host: 'localhost',
+    host: 'autorack.proxy.rlwy.net', // host từ Railway
     dialect: "mysql",
-    port: 3307,  // port đã map trong docker
-    logging: true
+    port: 34147,  // port từ Railway
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
   }
 );
 
+// Trong connectDB.js, thêm log chi tiết
 const connectDatabase = async () => {
   try {
     await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
+    console.log("Connected to database:", {
+      database: sequelize.config.database,
+      host: sequelize.config.host,
+      port: sequelize.config.port
+    });
   } catch (error) {
-    console.error("Unable to connect to the database:", error);
-    throw error;
+    console.error("Database connection error:", error);
   }
 };
 
