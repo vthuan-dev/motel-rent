@@ -1,12 +1,12 @@
 {
-    "build": {
-      "builder": "nixpacks",
-      "buildCommand": "cd server && npm install"
+  "builds": [
+    {
+      "src": "server/",
+      "use": "@vercel/node"
     },
-    "deploy": {
-      "startCommand": "cd server && npm start",
-      "restartPolicyType": "on_failure",
-      "healthcheckPath": "/",
-      "healthcheckTimeout": 100
+    {
+      "src": "client/",
+      "use": "@vercel/static"
     }
-  }
+  ]
+}
